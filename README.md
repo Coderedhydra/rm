@@ -1,10 +1,10 @@
 # AI Cursor (Minimal)
 
-A minimal, text-only, "Cursor-like" CLI that can generate an entire project from a natural language prompt using Google's Gemini 2.5 Flash.
+A minimal, text-only, "Cursor-like" generator that creates an entire project from a natural language prompt using Google's Gemini 2.5 Flash.
 
 - Uses `gemini-2.5-flash` via `google-generativeai`
 - Python-first support
-- Plans the project, then generates files iteratively
+- Web UI via Flask: paste text, click generate, download a zip
 
 ## Quick start
 
@@ -16,13 +16,22 @@ A minimal, text-only, "Cursor-like" CLI that can generate an entire project from
 pip install -r requirements.txt
 ```
 
-3) Set your API key (copy `.env.example` to `.env`):
+3) Set your API key (copy `.env.example` to `.env` or export):
 
 ```bash
 export GEMINI_API_KEY="YOUR_KEY_HERE"
 ```
 
-4) Generate a project:
+4) Start the Flask server:
+
+```bash
+python -m aicursor.server
+```
+
+Then open `http://localhost:8000` and submit your prompt. You'll receive a zip download of the generated project.
+
+## CLI (optional)
+You can still use the CLI if you prefer:
 
 ```bash
 python -m aicursor.cli generate \
